@@ -1,0 +1,20 @@
+version: '3.1'
+networks:
+  dev_mysql:
+    external: false
+
+services:
+  db-server:
+    container_name: dev_mysql
+    image: mysql:8.0.31
+    ports:
+      - "3306:3306"
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+    networks:
+      - dev_mysql
+    volumes:
+      - ${MYSQL_DATA_DIR}:/var/lib/mysql
+      - ${MYSQL_SCRIPTS_DIR}:/opt/mysql/scripts
