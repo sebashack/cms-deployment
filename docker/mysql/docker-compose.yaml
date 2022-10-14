@@ -4,7 +4,7 @@ networks:
     external: false
 
 services:
-  db-server:
+  mysql:
     container_name: dev_mysql
     image: mysql:8.0.31
     ports:
