@@ -15,15 +15,3 @@ services:
     volumes:
       - ${NGINX_CONFIG_DIR}/nginx.conf:/etc/nginx/nginx.conf
       - ${WORDPRESS_DIR}:/var/www/html/wordpress
-  phpfpm:
-    container_name: dev_fpm
-    build:
-      context: .
-      dockerfile: Dockerfile
-    ports:
-      - "9000:9000"
-    networks:
-      - dev_nginx
-    restart: always
-    volumes:
-      - ${WORDPRESS_DIR}:/var/www/html/wordpress
