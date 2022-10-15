@@ -1,7 +1,11 @@
 version: '3.1'
 networks:
   dev_mysql:
-    external: false
+    ipam:
+      driver: default
+      config:
+        - subnet: "172.31.0.0/24"
+          gateway: "172.31.0.1"
 
 services:
   mysql:
@@ -13,8 +17,12 @@ services:
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: wordpressdb
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: secret
     networks:
-      - dev_mysql
+      dev_mysql:
+        ipv4_address: "172.31.0.2"
     volumes:
       - ${MYSQL_DATA_DIR}:/var/lib/mysql
       - ${MYSQL_SCRIPTS_DIR}:/opt/mysql/scripts
