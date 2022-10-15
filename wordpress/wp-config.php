@@ -28,8 +28,8 @@ define( 'DB_USER', 'wordpress' );
 /** Database password */
 define( 'DB_PASSWORD', 'secret' );
 
-/** Database hostname: Change it to public EC2 instance IP */
-define( 'DB_HOST', '127.0.0.1' );
+/** Database hostname: Change it to public EC2 instance ADDR */
+define( 'DB_HOST', '172.31.0.1' );
 
 /** Database charset to use in creating database tables. */
 define( 'DB_CHARSET', 'utf8' );
@@ -79,7 +79,9 @@ $table_prefix = 'wp_';
  *
  * @link https://wordpress.org/support/article/debugging-in-wordpress/
  */
-define( 'WP_DEBUG', false );
+define( 'WP_DEBUG', true );
+define( 'WP_DEBUG_DISPLAY', false );
+define( 'WP_DEBUG_LOG', true );
 
 /* Add any custom values between this line and the "stop editing" line. */
 
