@@ -1,0 +1,24 @@
+version: '3.1'
+networks:
+  dev_dns2:
+    external: false
+
+services:
+  dns2:
+    container_name: dns-server2
+    hostname: dns-server2
+    image: technitium/dns-server:9.1
+    ports:
+      - "5380:5380" # DNS web console
+      - "53:53/udp" # DNS service
+      - "53:53/tcp" # DNS service
+    networks:
+      - dev_dns2
+    restart: always
+    environment:
+      - DNS_SERVER_DOMAIN=dns-server1 # The primary domain name used by this DNS Server to identify itself.
+      - DNS_SERVER_ADMIN_PASSWORD=secret
+    sysctls:
+      - net.ipv4.ip_local_port_range=1024 65000
+    volumes:
+      - ${DNS_CONFIG_DIR}:/etc/dns/config
