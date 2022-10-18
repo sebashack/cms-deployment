@@ -16,7 +16,7 @@ services:
       - dev_dns2
     restart: always
     environment:
-      - DNS_SERVER_DOMAIN=dns-server1 # The primary domain name used by this DNS Server to identify itself.
+      - DNS_SERVER_DOMAIN=dns-server2 # The primary domain name used by this DNS Server to identify itself.
       - DNS_SERVER_ADMIN_PASSWORD=secret
     sysctls:
       - net.ipv4.ip_local_port_range=1024 65000
