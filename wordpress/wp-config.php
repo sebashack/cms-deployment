@@ -85,7 +85,7 @@ define( 'WP_DEBUG_LOG', true );
 
 /* Add any custom values between this line and the "stop editing" line. */
 
-
+define( 'FS_METHOD', 'direct' );
 
 /* That's all, stop editing! Happy publishing. */
 
